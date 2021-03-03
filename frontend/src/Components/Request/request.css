@@ -1,0 +1,17 @@
+.bandReqContainer{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.reqDes div{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+.reqPro{
+    border: 1px solid #D4D4D5;
+    border-radius: 50%;
+}
+.ui.card {
+    margin: 0;
+}

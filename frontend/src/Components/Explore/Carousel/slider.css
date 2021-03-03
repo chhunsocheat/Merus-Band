@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Commissioner&display=swap');
+.sliderArrow {
+    /* z-index: 1; */
+   width: 20px;
+   height: 20px;
+   border-radius: 5px;
+  }
+  .slick-dots li.slick-active button:before {
+    color: #50AC5C;
+  }
+  
+  ::selection {
+    background: #d5d4d2;
+    color: #fff;
+    text-shadow: none;
+}
+.mutilpleSliderContainer{
+      margin-bottom: 30px;
+
+}
+.bigContainer{
+  width: 80%;
+}
+
+ /* .slick-prev:before {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.15);
+     border-radius: 50%;
+     padding: 10px;
+     background: white;
+  color: black;
+  font-size: 30px;
+  z-index: 20;
+  
+}
+.slick-next:before {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.15);
+     border-radius: 50%;
+     padding: 10px;
+     background: white;
+  color: black;
+  font-size: 30px;
+  z-index: 20;
+  } */
+  .slick-slider .slick-arrow.slick-prev {
+    left: -17px;
+    border-radius: 30px;
+}
+.slick-slider .slick-arrow {
+    background-color: #fff;
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    width: 48px;
+    height: 48px;
+    margin-top: -24px;
+    text-align: center;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.15);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.15);
+    border: 0;
+}
+button {
+    appearance: button;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+    box-sizing: border-box;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}
+.slick-slider .slick-arrow.slick-prev:after {
+    background-position: 0 -32px;
+}
+.slick-slider .slick-arrow:after {
+    content: "";
+    display: inline-block;
+    background: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_in_homepage_perseus/apps/arrows.a8b0bad.svg) no-repeat;
+    background-size: 16px 64px;
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    margin-right: 12px;
+}
+
+ 
+  .img-slide{
+      height: 100px;
+      object-fit: cover;
+  }
+  .img-container{
+      border: 1px solid #B5B6BA;
+  }
+ 
+
+/* .slick-slide {
+  margin: 0px 5px 0px 0px;
+}
+.slick-list {
+  margin: 0 -5px;
+} */
+.slick-slider .slick-slide {
+  padding: 0 15px;
+}
+ .slick-slider .slick-arrow.slick-next {
+  right: -17px;
+  border-radius: 30px;
+}
+ .slick-slider .slick-arrow {
+  background-color: #fff;
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  width: 48px;
+  height: 48px;
+  margin-top: -24px;
+  text-align: center;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.15);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.15);
+  border: 0;
+}
+button {
+  font-family: macan,helvetica neue,Helvetica,Arial,sans-serif;
+}
+button {
+  width: auto;
+  overflow: visible;
+}
+button, input, select, textarea {
+  margin: 0;
+  padding: 0;
+}
+.clickable, input[type=button], input[type=submit], button {
+  cursor: pointer;
+}
+user agent stylesheet
+button:active {
+  border-style: inset;
+}
+/* user agent stylesheet */
+button {
+  appearance: button;
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+  align-items: flex-start;
+  cursor: default;
+  box-sizing: border-box;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  padding: 1px 6px;
+  border-width: 2px;
+  border-style: outset;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-image: initial;
+}
+ .slick-slider {
+  position: relative;
+  display: block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+
+ .slick-slider .slick-arrow.slick-next:after {
+  background-position: 0 -48px;
+}
+ .slick-slider .slick-arrow:after {
+  content: "";
+  display: inline-block;
+  background: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_in_homepage_perseus/apps/arrows.a8b0bad.svg) no-repeat;
+  background-size: 16px 64px;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+}
+::selection {
+  background: #d5d4d2;
+  color: #fff;
+  text-shadow: none;
+}
+
+.userInfo-container{
+  font-family: 'Commissioner', sans-serif; 
+   display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+  justify-items: start;
+}
+.userInfo-container img{
+  width: calc(2vw + 20px);
+  height: calc(2vw + 20px);
+  border:1px solid black;
+border-radius: 50%;
+object-fit: cover;
+} 
+.slide-pf-info{
+  font-family: 'Commissioner', sans-serif; 
+
+display: grid;
+grid-template-rows:  20px 25px;
+}
+.slide-pf-info p{
+  font-family: 'Commissioner', sans-serif; 
+  font-weight: 700;
+
+}
+
+.slick-slide {
+  height: auto; 
+}
+.slick-track {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+.slick-slider .slick-track {
+  min-width: 100%;
+}
+.slick-slider .slick-list, .slider-package .slick-slider .slick-track {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+ .slick-track {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.slick-slider {
+  position: relative;
+  display: block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+ .slick-track:after, .slider-package .slick-track:before {
+  display: table;
+  content: "";
+}
+ .slick-track:after {
+  clear: both;
+}
+ .slick-track:after, .slider-package .slick-track:before {
+  display: table;
+  content: "";
+}
+
+/* Media query */
+@media (max-width:920px){
+  .bigContainer{
+    width: 95%;
+  }
+}

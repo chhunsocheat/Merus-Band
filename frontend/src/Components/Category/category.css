@@ -1,0 +1,9 @@
+.categoryContainer{
+    border-top: 1px solid #E4E5E7;
+    border-bottom: 1px solid #E4E5E7;
+color:#7A7D85;
+font-weight: 500;
+font-size: calc(1vw + 10px);
+    display: flex;
+    justify-content: space-evenly;
+}

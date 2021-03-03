@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Commissioner&display=swap');
+h1,h2,h3,h4{
+  font-family: 'Commissioner', sans-serif; 
+}
+.belowCategoryContainer {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 10px;
+  width: 80vw;
+  justify-items: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.belowCategoryContainer img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.img-below-container{
+  position: relative;
+  text-align: center;
+  color: white;
+  height: 100%;
+  width: 100%;
+}
+.top-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+.leftGrid {
+  width: 200px;
+  border-radius: 5px;
+  background-color: #fafafa;
+  border: 1px solid rgba(0, 0, 0, 0.479);
+  font-weight: 500;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.btnMeBelow {
+  font-family: "Montserrat";
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.5em 1.3em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: #28a745;
+
+  border: 1px solid #28a745;
+  transition: ease all 0.1s;
+  border-radius: 5px;
+}
+
+@media (max-width:480px){
+  .belowCategoryContainer {
+grid-template-columns: 1fr;
+  }
+}

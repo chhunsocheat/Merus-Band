@@ -1,0 +1,46 @@
+.signin-container{
+    transform: translateY(-50%);
+    margin-top: 30vh;
+    /* background: white;
+    padding: 30px;
+    border-radius: 5px; */
+}
+.signup-container{
+    transform: translateY(-50%);
+    margin-top: 40vh;
+    /* background: white;
+    padding: 30px;
+    border-radius: 5px; */
+}
+.backGround{
+    border-radius: 5px;
+    padding: 50px;
+    background: #F8F9FA;
+
+}
+.btnMe{
+    font-family: 'Montserrat';
+    box-sizing: border-box;
+    appearance: none;
+    background-color: transparent;
+    border: 1px solid black;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    padding: 0.5em 1.3em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+.btnMe:hover{
+    color: #21BA45;
+
+    border: 1px solid #21BA45;
+    transition: ease all 0.1s;
+}

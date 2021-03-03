@@ -1,0 +1,25 @@
+.active{
+    background:#28A745;
+    border-radius: 5px;
+}
+.sign-out:hover{
+    background: rgba(238, 47, 21, 0.63);
+    border-radius: 5px;
+}
+.fas{
+    font-size: 1.4rem;
+    padding: 8px;
+}
+#nav-background{
+    background-image: url("header-bg-5a3266e90a33f1c2319c66fb0c11460796743d6c226338411995d8ff33edec70.png");
+}
+.logoClass{
+    width: 40px;
+    height: 40px;
+}
+@media (min-width:1200px){
+    .logoClass{
+        width: 70px;
+        height: 70px;
+    }   
+}
