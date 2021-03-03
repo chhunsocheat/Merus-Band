@@ -19,7 +19,7 @@ mongoose.connect(config.DATABASE_URL, {
 const db = mongoose.connection;
 //when the server encounter error
 db.on('error',(error)=>console.error(error))
-//once it connects to the database
+//once it connects to the databasea
 db.once('open',()=>console.error("Connected to DB"))
 //to allow our sever to accept json files
 app.use(express.json({limit:"50mb"}))
