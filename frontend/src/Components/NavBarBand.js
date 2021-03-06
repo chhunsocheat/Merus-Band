@@ -24,6 +24,7 @@ const NavBarBand = () => {
     dispatch(
         logoutBand({ bandDetail: { username: "anonymous" }, loginBandState: false })
     );
+    
     //route user to sign in page after click sign out
     history.push("/signin");
   }

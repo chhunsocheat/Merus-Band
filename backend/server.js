@@ -1,4 +1,4 @@
-// require('dotenv').config()
+require('dotenv').config()
 const express = require("express")
 const cors = require('cors')
 const app = express()
@@ -10,12 +10,13 @@ app.use(cors())
 //connecting to the db using .env file
 
 //"mongodb+srv://socheatchhun:Socheat56@cluster0.ba7dc.mongodb.net/twitter?retryWrites=true&w=majority"
-mongoose.connect(config.DATABASE_URL, {
+mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then((res)=>{
    console.log("connected");
 })
+
 const db = mongoose.connection;
 //when the server encounter error
 db.on('error',(error)=>console.error(error))
