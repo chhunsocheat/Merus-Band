@@ -57,6 +57,7 @@ const NavBar = () => {
         </Form>
         <Nav
           className="mr-auto"
+          // eslint-disable-next-line no-dupe-keys
           style={{color:"white", fontSize: "20px", fontWeight: "500", color: "white" }}
         >
           {/* condition rednering to check when user is null when sign out */}
@@ -90,7 +91,7 @@ const NavBar = () => {
                   className="sign-out"
                   onClick={loggedOutUser}
                 >
-                  <i className="mr-1" className="fas fa-sign-out-alt"></i>
+                  <i className="fas fa-sign-out-alt mr-1"></i>
                   Sign Out
                 </NavDropdown.Item>
               </NavDropdown>,
