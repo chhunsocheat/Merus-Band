@@ -96,7 +96,7 @@ router.post("/band", async (req, res) => {
 });
 
 router.get("/picture",(req,res)=>{
-  return res.send(faker.image.people())
+  return res.send(faker.image.cats())
 })
 
 //Getting all the users from userDetails Schema

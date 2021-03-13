@@ -38,7 +38,7 @@ const Reviews = () => {
       {[3, 4, 5].map(el => {
         return (
           <Comment>
-            <Comment.people src={faker.image.people()} />
+            <Comment.Avatar src={faker.image.people()} />
             <Comment.Content>
               <Comment.Author as='a'><span>{faker.name.firstName()}</span> <span>{faker.name.lastName()}</span></Comment.Author>
               <Comment.Metadata>
@@ -59,7 +59,7 @@ const Reviews = () => {
       {allReviews.map(el => {
         return (
           <Comment>
-            <Comment.people src={el.userImg} />
+            <Comment.Avatar src={el.userImg} />
             <Comment.Content>
               <Comment.Author as='a'><span>{el.reviewByUsername}</span> </Comment.Author>
               <Comment.Metadata>
