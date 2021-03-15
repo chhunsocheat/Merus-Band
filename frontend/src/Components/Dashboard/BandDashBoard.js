@@ -21,7 +21,7 @@ const BandDashBoard = () => {
       bandPrice: "Not Set",
     },
   });
-  const [rating, setRating] = useState({ rating: 4 });
+  // const [rating, setRating] = useState({ rating: 4 });
 /**
  * function to load data of the band from the server
  */

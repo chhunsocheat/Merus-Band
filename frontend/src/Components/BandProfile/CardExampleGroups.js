@@ -7,7 +7,7 @@ const CardExampleGroups = () => (
     <Image
       floated='right'
       size='mini'
-      src='https://robohash.org/${band.username}'
+      src={`https://robohash.org/`}
     />
     <Card.Header>Steve Sanders</Card.Header>
     <Card.Meta>Friends of Elliot</Card.Meta>

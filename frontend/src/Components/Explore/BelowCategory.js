@@ -6,9 +6,7 @@ import { useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 const BelowCategory = ({ client }) => {
   const history = useHistory()
-  const loginState = useSelector((state) => {
-    return state.loginState;
-  });
+
   const loginBandState = useSelector((state) => {
     return state.loginBandState;
   });
