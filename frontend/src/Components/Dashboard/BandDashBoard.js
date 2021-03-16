@@ -3,8 +3,12 @@ import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Button,Rating } from 'semantic-ui-react'
 import axios from "axios";
+import { storage } from "../../Firebase/init.js"
 const BandDashBoard = () => {
+  //History Route
   const history = useHistory();
+
+  //Component's State
   const band = useSelector((state) => {
     return state.band;
   });
@@ -21,7 +25,9 @@ const BandDashBoard = () => {
       bandPrice: "Not Set",
     },
   });
-  // const [rating, setRating] = useState({ rating: 4 });
+  const [userImagePost, setUserImagePost] = useState(null)
+  const [uploadProgress, setUploadProgress] = useState(null)
+  const [userImagePostUrl, setUserImagePostUrl] = useState(band.userImg)
 /**
  * function to load data of the band from the server
  */
@@ -31,6 +37,46 @@ const BandDashBoard = () => {
     );
     setBand(bandData.data);
     setVideos(bandData.data.videos);
+  }
+
+//function to upload the profile of the user
+
+  const fileUploadHandler = async (e) => {
+    //(e.target.files[0]);
+    let userImagePost = e.target.files[0];
+    setUserImagePost(e.target.files[0])
+    //("upload");
+    if (userImagePost === '') {
+      console.error(`not an image, the image file is a ${typeof (userImagePost)}`)
+    }
+    const uploadTask = storage.ref(`/profile/${userImagePost.name}`).put(userImagePost)
+    uploadTask.on('state_changed',
+      (snapshot) => {
+        let progress =
+        Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+
+        setUploadProgress(`${progress}%...`)
+        //takes a snap shot of the process as it is happening
+        //(snapshot)
+      }, (err) => {
+        //catches the errors
+
+        //(err)
+      }, () => {
+        // gets the functions from storage refences the image storage in firebase by the children
+        // gets the download url then sets the image from firebase as the value for the imgUrl key:
+        storage.ref('profile').child(userImagePost.name).getDownloadURL()
+        //here fireBaseUrl is the url returned by the firebase storage to upload the user profile
+          .then(fireBaseUrl => {
+            // setUserImagePostUrl(fireBaseUrl)
+            // let updatedUser = axios.post("https://twitter-clone-backend123.herokuapp.com/users/changeprofile",
+            //   { username: mainuser.username, profileUrl: fireBaseUrl })
+            // dispatch(initUser({ ...mainuser, userImg: fireBaseUrl }))
+            // setUserImagePostUrl(fireBaseUrl)
+            // setUploadProgress(null)
+          })
+      })
+
   }
   //routing band to the addDetail and addPerformance page.
   const addDetail = () => {
@@ -47,20 +93,26 @@ const BandDashBoard = () => {
     <div style={{marginTop:"60px"}}>
       <div className="bandLeft">
         <div className="bandLeftUpper">
-          {/* <Button
-          color='green'
-            onClick={() => {
-              //(rating);
-            }}
-          >
-            View
-          </Button> */}
+
           <img src={band.userImg} alt="" />
           <h3>{band.username}</h3>
           <p> {bandProfile.description.bandTitle}</p>
           <Rating icon='star' maxRating={5} defaultRating={4} clearable />
 
           <div style={{color:"rgb(124,124,125)"}}><i class="fas fa-flag"></i>Report</div>
+          <div className="upload-container">
+                {/* <input className="upload" type="file" name="" onChange={fileUploadHandler} /> */}
+                <input
+                  onChange={fileUploadHandler}
+                  type="file"
+                  name="file-input"
+                  id="file-input"
+                  className="file-input__input upload"
+                />
+                <label className="file-input__label" for="file-input">
+                  <i className="fas fa-plus" style={{ cursor: "pointer" }}></i>
+                </label>
+              </div>
           <Button
           style={{margin:"30px 0px"}}
           color='green'
@@ -108,7 +160,7 @@ const BandDashBoard = () => {
           </div>
         </div>
       </div>
-      {/* <p>{band.username}</p> */}
+
     </div>
   );
 };
