@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Button,Rating } from 'semantic-ui-react'
+import { Button, Rating } from "semantic-ui-react";
 import axios from "axios";
-import { storage } from "../../Firebase/init.js"
+import { storage } from "../../Firebase/init.js";
 const BandDashBoard = () => {
   //History Route
   const history = useHistory();
@@ -25,12 +25,12 @@ const BandDashBoard = () => {
       bandPrice: "Not Set",
     },
   });
-  const [userImagePost, setUserImagePost] = useState(null)
-  const [uploadProgress, setUploadProgress] = useState(null)
-  const [userImagePostUrl, setUserImagePostUrl] = useState(band.userImg)
-/**
- * function to load data of the band from the server
- */
+  const [userImagePost, setUserImagePost] = useState(null);
+  const [uploadProgress, setUploadProgress] = useState(null);
+  const [userImagePostUrl, setUserImagePostUrl] = useState(band.userImg);
+  /**
+   * function to load data of the band from the server
+   */
   async function loadBand() {
     const bandData = await axios.get(
       `http://localhost:3001/users/${band.username}`
@@ -39,45 +39,56 @@ const BandDashBoard = () => {
     setVideos(bandData.data.videos);
   }
 
-//function to upload the profile of the user
+  //function to upload the profile of the user
 
   const fileUploadHandler = async (e) => {
     //(e.target.files[0]);
     let userImagePost = e.target.files[0];
-    setUserImagePost(e.target.files[0])
+    setUserImagePost(e.target.files[0]);
     //("upload");
-    if (userImagePost === '') {
-      console.error(`not an image, the image file is a ${typeof (userImagePost)}`)
+    if (userImagePost === "") {
+      console.error(
+        `not an image, the image file is a ${typeof userImagePost}`
+      );
     }
-    const uploadTask = storage.ref(`/profile/${userImagePost.name}`).put(userImagePost)
-    uploadTask.on('state_changed',
+    const uploadTask = storage
+      .ref(`/profile/${userImagePost.name}`)
+      .put(userImagePost);
+    uploadTask.on(
+      "state_changed",
       (snapshot) => {
-        let progress =
-        Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        let progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
 
-        setUploadProgress(`${progress}%...`)
+        setUploadProgress(`${progress}%...`);
         //takes a snap shot of the process as it is happening
         //(snapshot)
-      }, (err) => {
+      },
+      (err) => {
         //catches the errors
 
-        //(err)
-      }, () => {
+        console.log(err);
+      },
+      () => {
         // gets the functions from storage refences the image storage in firebase by the children
         // gets the download url then sets the image from firebase as the value for the imgUrl key:
-        storage.ref('profile').child(userImagePost.name).getDownloadURL()
-        //here fireBaseUrl is the url returned by the firebase storage to upload the user profile
-          .then(fireBaseUrl => {
+        storage
+          .ref("profile")
+          .child(userImagePost.name)
+          .getDownloadURL()
+          //here fireBaseUrl is the url returned by the firebase storage to upload the user profile
+          .then((fireBaseUrl) => {
             // setUserImagePostUrl(fireBaseUrl)
             // let updatedUser = axios.post("https://twitter-clone-backend123.herokuapp.com/users/changeprofile",
             //   { username: mainuser.username, profileUrl: fireBaseUrl })
             // dispatch(initUser({ ...mainuser, userImg: fireBaseUrl }))
             // setUserImagePostUrl(fireBaseUrl)
             // setUploadProgress(null)
-          })
-      })
-
-  }
+          });
+      }
+    );
+  };
   //routing band to the addDetail and addPerformance page.
   const addDetail = () => {
     history.push(`/addbanddetail/${band.username}`);
@@ -90,32 +101,33 @@ const BandDashBoard = () => {
     loadBand();
   }, []);
   return (
-    <div style={{marginTop:"60px"}}>
+    <div style={{ marginTop: "60px" }}>
       <div className="bandLeft">
         <div className="bandLeftUpper">
-
           <img src={band.userImg} alt="" />
           <h3>{band.username}</h3>
           <p> {bandProfile.description.bandTitle}</p>
-          <Rating icon='star' maxRating={5} defaultRating={4} clearable />
+          <Rating icon="star" maxRating={5} defaultRating={4} clearable />
 
-          <div style={{color:"rgb(124,124,125)"}}><i class="fas fa-flag"></i>Report</div>
+          <div style={{ color: "rgb(124,124,125)" }}>
+            <i class="fas fa-flag"></i>Report
+          </div>
           <div className="upload-container">
-                {/* <input className="upload" type="file" name="" onChange={fileUploadHandler} /> */}
-                <input
-                  onChange={fileUploadHandler}
-                  type="file"
-                  name="file-input"
-                  id="file-input"
-                  className="file-input__input upload"
-                />
-                <label className="file-input__label" for="file-input">
-                  <i className="fas fa-plus" style={{ cursor: "pointer" }}></i>
-                </label>
-              </div>
+            {/* <input className="upload" type="file" name="" onChange={fileUploadHandler} /> */}
+            <input
+              onChange={fileUploadHandler}
+              type="file"
+              name="file-input"
+              id="file-input"
+              className="file-input__input upload"
+            />
+            <label className="file-input__label" for="file-input">
+              <i className="fas fa-plus" style={{ cursor: "pointer" }}></i>
+            </label>
+          </div>
           <Button
-          style={{margin:"30px 0px"}}
-          color='green'
+            style={{ margin: "30px 0px" }}
+            color="green"
             onClick={() => {
               history.push(`/band/${band.username}`);
             }}
@@ -123,14 +135,12 @@ const BandDashBoard = () => {
             <i class="fas fa-eye"></i> View As Public
           </Button>
           <div className="bandLeftButton">
-          <Button
-          color='red'
-          onClick={addPerformances}  >
+            <Button color="red" onClick={addPerformances}>
               <i class="fab fa-youtube"></i>
               Upload Your Performances
-              </Button>
-            <Button color='green' onClick={addDetail}>
-            <i class="fas fa-file-alt"></i>
+            </Button>
+            <Button color="green" onClick={addDetail}>
+              <i class="fas fa-file-alt"></i>
               Add/Edit Band Detail
             </Button>
           </div>
@@ -160,7 +170,6 @@ const BandDashBoard = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };
