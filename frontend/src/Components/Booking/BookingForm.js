@@ -72,9 +72,7 @@ const BookingForm = () => {
         <label htmlFor="date">Date For The Event</label>
         <Datetime
           onChange={(e) => {
-            //(e);
             const date=moment(e._d).format("dddd, MMMM Do YYYY, h:mm:ss a")
-            //();
             setDate(date);
           }}
         />
@@ -111,20 +109,11 @@ const BookingForm = () => {
         <TextArea
           ref={focus}
           onChange={(e, d) => {
-            //(e);
             setRequestMessage(d.value);
           }}
           placeholder="Any message you want to send to the band, you can write it here"
         />
-        {/*          
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            //(moment(date).format("dddd, MMMM Do YYYY, h:mm:ss a"));
-          }}
-        >
-          Check1
-        </button> */}
+    
         <p>{feedback}</p>
         <Button onClick={submitBooking} basic color="green" content="Request Now" />
       </Form>
