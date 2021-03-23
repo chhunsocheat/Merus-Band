@@ -79,7 +79,19 @@ const SignUp = () => {
       <Row>
         <Col></Col>
         <Col className="backGround" xs={10} md={6}>
-        <h1>Sign Up</h1>
+        <h1 style={{position:"relative"}}>Sign Up
+        <i
+                style={{
+                  marginLeft:"5px",
+                  top: "60%",
+                  position: "absolute",
+                  fontSize: "0.8em",
+                  transform: "translateY(-50%)",
+                }}
+                class="fas fa-sign-in-alt"
+              ></i>
+
+        </h1>
 
           <form >
 
@@ -121,11 +133,12 @@ const SignUp = () => {
             {/* //giving user error messages of why they cannot sign up */}
             {feedback.map(feedback => <Alert variant="warning">{feedback.message}</Alert>)}
             <button onClick={submitHandler} type="submit" className="btnMe">{status}</button>
-            <p className="forgot-password text-right">Already a member? 
+            <p className="forgot-password text-left" style={{marginTop:"10px"}}>Already a member? 
               <NavLink className="forgot-password text-right" to="/signin"> Sign In</NavLink>
             </p>
-            <p className="forgot-password text-right">Register Your Band? 
-              <NavLink className="forgot-password text-right" to="/join"> Band Sign Up</NavLink>
+            <p className="forgot-password text-left">Register Your Band? 
+              <NavLink className="forgot-password text-right" to="/join"> Band Sign Up
+              </NavLink>
             </p>
 
 

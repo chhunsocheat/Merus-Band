@@ -7,7 +7,7 @@ import {
   loginUser,
   initBand,
   loginBand,
-  isBand
+  isBand,
 } from "../../reducers/rootreducer";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 // import "./button.scss"
@@ -49,7 +49,7 @@ const SignIn = () => {
       .then((res) => {
         //dispatch an action to the reducer
         //(res.data);
-        if(res.status===201) {
+        if (res.status === 201) {
           //(res.data);
 
           setStatus("Sign in");
@@ -61,14 +61,14 @@ const SignIn = () => {
         }
         //push the route to profile/username
         if (res.data.data.isBand === true) {
-          dispatch(isBand(true))
+          dispatch(isBand(true));
           dispatch(initBand(res.data.data));
           dispatch(loginBand(true));
           history.push(`/band/${res.data.data.username}`);
 
           //(res.data.data.isBand);
         } else if (res.data.data.isBand === false) {
-          dispatch(isBand(false))
+          dispatch(isBand(false));
           //dispatch an action to the reducer to tell the app
           //that the user has login
           //(res.data.data.isBand);
@@ -89,7 +89,21 @@ const SignIn = () => {
       <Row>
         <Col></Col>
         <Col className="backGround" xs={10} md={6}>
-          <h1>Sign In</h1>
+          <div>
+            <h1 style={{ position: "relative" }}>
+              Sign In
+              <i
+                style={{
+                  marginLeft:"5px",
+                  top: "60%",
+                  position: "absolute",
+                  fontSize: "0.8em",
+                  transform: "translateY(-50%)",
+                }}
+                class="fas fa-sign-in-alt"
+              ></i>
+            </h1>
+          </div>
           <form>
             <div className="form-group">
               <input

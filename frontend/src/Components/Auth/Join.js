@@ -105,7 +105,19 @@ const Join = () => {
         <Col></Col>
 
         <Col className="backGround" xs={10} md={6}>
-          <h1>Join Us</h1>
+          <h1 style={{position:"relative"}}>Join Us
+          <i
+                style={{
+                  marginLeft:"5px",
+                  top: "50%",
+                  position: "absolute",
+                  fontSize: "0.8em",
+                  transform: "translateY(-50%)",
+                }}
+                class="fas fa-guitar"
+              ></i>
+
+          </h1>
           <form>
             <label htmlFor="username">Email</label>
             <div className="form-group">

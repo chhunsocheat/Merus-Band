@@ -1,11 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { Button, Rating } from "semantic-ui-react";
+import { useSelector,useDispatch } from "react-redux";
+import {Rating} from "semantic-ui-react";
+
+import LinearProgress from '@material-ui/core/LinearProgress';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+
+
+import {initBand} from  "../../reducers/rootreducer"
 import axios from "axios";
 import { storage } from "../../Firebase/init.js";
+
+
+
 const BandDashBoard = () => {
+
+  //Upload Styling
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      '& > *': {
+        margin: theme.spacing(1),
+      },
+    },
+    input: {
+      display: 'none',
+    },
+  }));
+  const classes = useStyles();
   //History Route
+  const dispatch= useDispatch();
   const history = useHistory();
 
   //Component's State
@@ -45,7 +70,7 @@ const BandDashBoard = () => {
     //(e.target.files[0]);
     let userImagePost = e.target.files[0];
     setUserImagePost(e.target.files[0]);
-    //("upload");
+    console.log(userImagePost);
     if (userImagePost === "") {
       console.error(
         `not an image, the image file is a ${typeof userImagePost}`
@@ -61,7 +86,7 @@ const BandDashBoard = () => {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
 
-        setUploadProgress(`${progress}%...`);
+        setUploadProgress(progress);
         //takes a snap shot of the process as it is happening
         //(snapshot)
       },
@@ -71,6 +96,7 @@ const BandDashBoard = () => {
         console.log(err);
       },
       () => {
+        setUploadProgress(null);
         // gets the functions from storage refences the image storage in firebase by the children
         // gets the download url then sets the image from firebase as the value for the imgUrl key:
         storage
@@ -78,13 +104,13 @@ const BandDashBoard = () => {
           .child(userImagePost.name)
           .getDownloadURL()
           //here fireBaseUrl is the url returned by the firebase storage to upload the user profile
-          .then((fireBaseUrl) => {
-            // setUserImagePostUrl(fireBaseUrl)
-            // let updatedUser = axios.post("https://twitter-clone-backend123.herokuapp.com/users/changeprofile",
-            //   { username: mainuser.username, profileUrl: fireBaseUrl })
-            // dispatch(initUser({ ...mainuser, userImg: fireBaseUrl }))
-            // setUserImagePostUrl(fireBaseUrl)
-            // setUploadProgress(null)
+          .then(async (fireBaseUrl) => {
+            setUserImagePostUrl(fireBaseUrl)
+            let updatedUser = await axios.post("http://localhost:3001/moredetail/changeprofile",
+              { username: band.username, profileUrl: fireBaseUrl })
+            dispatch(initBand({ ...band, userImg: fireBaseUrl }))
+            setUserImagePostUrl(fireBaseUrl)
+            setUploadProgress(null)
           });
       }
     );
@@ -104,27 +130,40 @@ const BandDashBoard = () => {
     <div style={{ marginTop: "60px" }}>
       <div className="bandLeft">
         <div className="bandLeftUpper">
-          <img src={band.userImg} alt="" />
+          <img src={userImagePostUrl} alt="" />
           <h3>{band.username}</h3>
+          {uploadProgress===null?<></>:
+                <LinearProgress variant="determinate" value={uploadProgress} />
+
+          }
           <p> {bandProfile.description.bandTitle}</p>
           <Rating icon="star" maxRating={5} defaultRating={4} clearable />
 
           <div style={{ color: "rgb(124,124,125)" }}>
             <i class="fas fa-flag"></i>Report
           </div>
-          <div className="upload-container">
-            {/* <input className="upload" type="file" name="" onChange={fileUploadHandler} /> */}
-            <input
+
+  
+
+          {/* New Button  */}
+          <div className={classes.root}>
+      <input
               onChange={fileUploadHandler}
-              type="file"
-              name="file-input"
-              id="file-input"
-              className="file-input__input upload"
-            />
-            <label className="file-input__label" for="file-input">
-              <i className="fas fa-plus" style={{ cursor: "pointer" }}></i>
-            </label>
-          </div>
+        accept="image/*"
+        className={classes.input}
+        id="contained-button-file"
+        multiple
+        type="file"
+      />
+      <label htmlFor="contained-button-file">
+        <Button variant="contained" color="primary" component="span">
+          Upload
+        </Button>
+      </label>
+     
+    </div>
+
+         
           <Button
             style={{ margin: "30px 0px" }}
             color="green"
