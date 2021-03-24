@@ -5,7 +5,7 @@ import { useSelector } from "react-redux"
 import axios from "axios"
 const ReviewMessage = ({ addReview }) => {
   
-  const {isBand} = useSelector(state=>{
+  const {isBand,loginState} = useSelector(state=>{
     return state;
   })
   const { username } = useParams()
@@ -64,23 +64,12 @@ const ReviewMessage = ({ addReview }) => {
       }}
 
       />
-      {/* {loginState || loginBandState === true ?
-        <Button className="mb-5" onClick={postReview} content='Add Review' labelPosition='left' icon='edit' primary />
-        :
-        <Popup
-          content='You need to sign in first'
-          on='click'
-          pinned
-          trigger={
-            <Button className="mb-5" content='Add Review' labelPosition='left' icon='edit' primary />
-          }
-        />
-      } */}
+
       {!isBand?
       <Button className="mb-5" onClick={postReview} content='Add Review' labelPosition='left' icon='edit' primary />
     :
     <Popup
-          content='You need to sign in first'
+          content='You need to sign in as user'
           on='click'
           pinned
           trigger={

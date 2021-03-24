@@ -55,4 +55,45 @@ router.post("/addvdourl", async (req, res) => {
         return res.send(band)
   });
 
+
+  router.post("/changeprofile",async(req,res)=>{
+    const {username,profileUrl}= req.body;
+    try {
+      let user;
+      user = await BandDetail.updateOne({
+        username,
+      },{
+        $set:{
+          userImg:profileUrl
+        }
+      })
+    return res.json({message:"Updated Profile Success",user})
+      
+    } catch (error) {
+      console.log(error);
+    }
+    return res.json({message:"Updated Profile Not Success"})
+
+  })
+
+  router.post("/changeprofileuser",async(req,res)=>{
+    const {username,profileUrl}= req.body;
+    try {
+      let user;
+      user = await UserDetail.updateOne({
+        username,
+      },{
+        $set:{
+          userImg:profileUrl
+        }
+      })
+    return res.json({message:"Updated Profile Success",user})
+      
+    } catch (error) {
+      console.log(error);
+    }
+    return res.json({message:"Updated Profile Not Success"})
+
+  })
+
 module.exports = router;

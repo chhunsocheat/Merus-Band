@@ -95,9 +95,7 @@ router.post("/band", async (req, res) => {
 //   return res.status(200).json({ data: savedBand });
 });
 
-router.get("/picture",(req,res)=>{
-  return res.send(faker.image.cats())
-})
+
 
 //Getting all the users from userDetails Schema
 router.get("/", async (req, res) => {

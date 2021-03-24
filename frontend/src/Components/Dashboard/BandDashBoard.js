@@ -1,36 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useSelector,useDispatch } from "react-redux";
-import {Rating} from "semantic-ui-react";
+import { useSelector, useDispatch } from "react-redux";
+import { Rating } from "semantic-ui-react";
 
-import LinearProgress from '@material-ui/core/LinearProgress';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
+import LinearProgress from "@material-ui/core/LinearProgress";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import Avatar from '@material-ui/core/Avatar';
 
-
-import {initBand} from  "../../reducers/rootreducer"
+import { initBand } from "../../reducers/rootreducer";
 import axios from "axios";
 import { storage } from "../../Firebase/init.js";
 
-
-
 const BandDashBoard = () => {
-
   //Upload Styling
   const useStyles = makeStyles((theme) => ({
     root: {
-      '& > *': {
+      "& > *": {
         margin: theme.spacing(1),
       },
     },
     input: {
-      display: 'none',
+      display: "none",
+    },
+    large: {
+      width: theme.spacing(12),
+      height: theme.spacing(12),
     },
   }));
   const classes = useStyles();
   //History Route
-  const dispatch= useDispatch();
+  const dispatch = useDispatch();
   const history = useHistory();
 
   //Component's State
@@ -105,12 +105,14 @@ const BandDashBoard = () => {
           .getDownloadURL()
           //here fireBaseUrl is the url returned by the firebase storage to upload the user profile
           .then(async (fireBaseUrl) => {
-            setUserImagePostUrl(fireBaseUrl)
-            let updatedUser = await axios.post("http://localhost:3001/moredetail/changeprofile",
-              { username: band.username, profileUrl: fireBaseUrl })
-            dispatch(initBand({ ...band, userImg: fireBaseUrl }))
-            setUserImagePostUrl(fireBaseUrl)
-            setUploadProgress(null)
+            setUserImagePostUrl(fireBaseUrl);
+            let updatedUser = await axios.post(
+              "http://localhost:3001/moredetail/changeprofile",
+              { username: band.username, profileUrl: fireBaseUrl }
+            );
+            dispatch(initBand({ ...band, userImg: fireBaseUrl }));
+            setUserImagePostUrl(fireBaseUrl);
+            setUploadProgress(null);
           });
       }
     );
@@ -130,12 +132,14 @@ const BandDashBoard = () => {
     <div style={{ marginTop: "60px" }}>
       <div className="bandLeft">
         <div className="bandLeftUpper">
-          <img src={userImagePostUrl} alt="" />
-          <h3>{band.username}</h3>
-          {uploadProgress===null?<></>:
-                <LinearProgress variant="determinate" value={uploadProgress} />
+        <Avatar style={{margin:"auto"}} alt="Remy Sharp" src={userImagePostUrl} className={classes.large} />
 
-          }
+          <h3>{band.username}</h3>
+          {uploadProgress === null ? (
+            <></>
+          ) : (
+            <LinearProgress variant="determinate" value={uploadProgress} />
+          )}
           <p> {bandProfile.description.bandTitle}</p>
           <Rating icon="star" maxRating={5} defaultRating={4} clearable />
 
@@ -143,27 +147,23 @@ const BandDashBoard = () => {
             <i class="fas fa-flag"></i>Report
           </div>
 
-  
-
-          {/* New Button  */}
+          {/* New Upload Button */}
           <div className={classes.root}>
-      <input
+            <input
               onChange={fileUploadHandler}
-        accept="image/*"
-        className={classes.input}
-        id="contained-button-file"
-        multiple
-        type="file"
-      />
-      <label htmlFor="contained-button-file">
-        <Button variant="contained" color="primary" component="span">
-          Upload
-        </Button>
-      </label>
-     
-    </div>
+              accept="image/*"
+              className={classes.input}
+              id="contained-button-file"
+              multiple
+              type="file"
+            />
+            <label htmlFor="contained-button-file">
+              <Button variant="contained" color="primary" component="span">
+                Upload
+              </Button>
+            </label>
+          </div>
 
-         
           <Button
             style={{ margin: "30px 0px" }}
             color="green"
