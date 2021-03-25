@@ -3,17 +3,20 @@ import { Button, Card, Image } from "semantic-ui-react";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import {getClientInfo} from "../../Helper/helper"
 import axios from "axios"
 import faker from "faker"
 import "./request.css";
 const PendingRequestUser = ({ reqInfo }) => {
   const [declineState, setDeclineState] = useState("Delete Request")
   const [deleteStatus, setDeleteStatus] = useState(false)
-  const band = useSelector((state) => {
-    return state.band;
-  });
+  const [bandRequestedImg,setbandRequestedImg] = useState("https://i.stack.imgur.com/34AD2.jpg");
+  
+
+
+
   async function deleteRequest() {
-    const res = await axios.post(
+    await axios.post(
       `http://localhost:3001/requests/declinerequest`, {
       id: reqInfo._id
     }
@@ -21,26 +24,30 @@ const PendingRequestUser = ({ reqInfo }) => {
     setDeclineState("Request Deleted")
   }
 
-
+  const setRequestedBandImg= async ()=>{
+    setbandRequestedImg(await (await getClientInfo(reqInfo.requestedToUsername)).data.userImg)
+  }
 
   useEffect(() => {
     //(reqInfo._id);
     //(faker.lorem.sentence());
+    setRequestedBandImg();
+    console.log(reqInfo);
   }, [reqInfo]);
 
   return (
     <Card>
       <Card.Content>
-        <a style={{ textDecoration: "none", color: "black" }} href={`/user/${reqInfo.requestedToUsername}`}>
+        <a style={{ textDecoration: "none", color: "black" }} href={`/band/${reqInfo.requestedToUsername}`}>
           <Image
             className="reqPro"
             floated="right"
             size="mini"
-            src={`https://robohash.org/${reqInfo.requestedToUsername}`}
+            src={bandRequestedImg}
           />
         </a>
         <Card.Header>
-          <a style={{ textDecoration: "none", color: "black" }} href={`/user/${reqInfo.requestedToUsername}`}>
+          <a style={{ textDecoration: "none", color: "black" }} href={`/band/${reqInfo.requestedToUsername}`}>
             To: {reqInfo.requestedToUsername}
           </a>
         </Card.Header>

@@ -6,3 +6,8 @@ export async function loadBand(bandUsername) {
     );
     return bandData;
   }
+
+export function getClientInfo(client){
+  const clientRes =  axios.get(`http://localhost:3001/users/${client}`);
+  return clientRes;
+}
