@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { Button, Card, Image } from "semantic-ui-react";
-import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import {getClientInfo} from "../../Helper/helper"
 import axios from "axios"
-import faker from "faker"
 import "./request.css";
 const PendingRequestUser = ({ reqInfo }) => {
   const [declineState, setDeclineState] = useState("Delete Request")
