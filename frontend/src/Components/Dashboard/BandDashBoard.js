@@ -11,7 +11,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { initBand } from "../../reducers/rootreducer";
 import axios from "axios";
 import { storage } from "../../Firebase/init.js";
-
+//
 const BandDashBoard = () => {
   //Upload Styling
   const useStyles = makeStyles((theme) => ({
