@@ -32,7 +32,7 @@ const PendingRequestUser = ({ reqInfo }) => {
 
     setRequestedBandImg();
     console.log(reqInfo);
-  }, [reqInfo]);
+  }, []);
 
   return (
     <Card>
