@@ -29,8 +29,7 @@ const PendingRequestUser = ({ reqInfo }) => {
   }
 
   useEffect(() => {
-    //(reqInfo._id);
-    //(faker.lorem.sentence());
+
     setRequestedBandImg();
     console.log(reqInfo);
   }, [reqInfo]);
