@@ -11,7 +11,7 @@ const PendingRequestUser = ({ reqInfo }) => {
   
 
 
-
+  //function for deleting request
   async function deleteRequest() {
     await axios.post(
       `http://localhost:3001/requests/declinerequest`, {
