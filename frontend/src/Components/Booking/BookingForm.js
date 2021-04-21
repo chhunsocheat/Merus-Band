@@ -111,7 +111,7 @@ const BookingForm = () => {
           onChange={(e, d) => {
             setRequestMessage(d.value);
           }}
-          placeholder="Any message you want to send to the band, you can write it here"
+          placeholder="Message to your band"
         />
     
         <p>{feedback}</p>
