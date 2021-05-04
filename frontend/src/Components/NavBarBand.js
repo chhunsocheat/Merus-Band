@@ -28,7 +28,7 @@ const NavBarBand = () => {
     //route user to sign in page after click sign out
     history.push("/signin");
   }
-  //geting state from the store
+
   const user = useSelector((state) => {
     return state.user;
   });
