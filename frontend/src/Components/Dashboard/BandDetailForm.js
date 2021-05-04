@@ -3,19 +3,29 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./banddetailform.css";
 import { Input, Label ,Button} from "semantic-ui-react";
+import SimpleModal from "./SimpleModal"
+import { logoutBand } from "../../reducers/rootreducer";
 
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 const BandDetailForm = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const band = useSelector((state) => {
     return state.band;
   });
   //all the state of the component
+  const [modalState,setModalState] = useState(false)
   const [bandTitle, setBandTitle] = useState("");
   const [bandDescription, setBandDescription] = useState("");
   const [bandPrice, setBandPrice] = useState(0);
   const [bandPhoneNumber, setBandPhoneNumber] = useState(0);
   const [feedback, setFeedback] = useState(null);
+  
+
+
+
+
+
  /**
   * Function to load data for the band from the server
   */
@@ -31,6 +41,9 @@ const BandDetailForm = () => {
    */
   const submitHandler = async (e) => {
     e.preventDefault();
+    try {
+      
+    
     const bandData = await axios.post(
       "http://localhost:3001/moredetail/adddetail",
       {
@@ -39,13 +52,33 @@ const BandDetailForm = () => {
         bandDescription,
         bandPrice,
         bandPhoneNumber
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${band.accessToken}`,
+        },
       }
     );
+    console.log(bandData);
+  
     if (bandData.status === 201) {
       setFeedback("Please Fill in the Required Fields");
     } else {
       history.push(`/band/${band.username}`);
     }
+  } catch (error) {
+    switch (error.response.status) {
+      case 403:
+        dispatch(
+          logoutBand({ bandDetail: { username: "anonymous" }, loginBandState: false })
+      );
+        setModalState(true)
+        setFeedback("You need to login again");
+        break
+      default:
+          break
+   }
+  }
   };
   useEffect(() => {
     loadBand().then((res) => {
@@ -136,6 +169,9 @@ const BandDetailForm = () => {
               />
             </div> */}
       <p>{feedback}</p>
+      {modalState?
+      <SimpleModal modalState={modalState}/>:<></>
+    }
       <Button color="green" onClick={submitHandler}>Submit</Button>
     </form>
   );

@@ -76,7 +76,7 @@ router.post("/band", async (req, res) => {
         username: band.username,
         emial: band.email,
       };
-      const accessToken = jwt.sign(bandToken, config.SECRET);
+      const accessToken = jwt.sign(bandToken, config.SECRET,{expiresIn:60*60*24});
       const newBand = await band.save();
       const newBandDetail = await bandDetail.save();
       const lastBandDetail = {
@@ -142,7 +142,7 @@ router.post("/login", async (req, res) => {
           username: user.username,
           emial: user.email,
         };
-        const accessToken = jwt.sign(userToken, config.SECRET);
+        const accessToken = jwt.sign(userToken, config.SECRET,{expiresIn:60*60*24});
         //if hashed pw match with plain pw log them in
 
         userDetail = await UserDetail.findOne({ username: user.username });
@@ -168,7 +168,7 @@ router.post("/login", async (req, res) => {
             username: band.username,
             emial: band.email,
           };
-          const accessToken = jwt.sign(bandToken, config.SECRET);
+          const accessToken = jwt.sign(bandToken, config.SECRET,{expiresIn:60*60*24});
           //if hashed pw match with plain pw log them in
   
           bandDetail = await BandDetail.findOne({ username: band.username });
@@ -191,7 +191,7 @@ router.post("/login", async (req, res) => {
 });
 //Geeting one client
 router.get("/:clientname", getClient, (req, res) => {
-  res.send(res.client);
+ return res.send(res.client);
 });
 
 router.get("/user/:username", getClient, (req, res) => {
@@ -251,7 +251,7 @@ router.post("/", async (req, res) => {
         username: user.username,
         emial: user.email,
       };
-      const accessToken = jwt.sign(userToken, config.SECRET);
+      const accessToken = jwt.sign(userToken, config.SECRET,{expiresIn:60*60*24});
       const newUser = await user.save();
       const newUserDetail = await userDetail.save();
       const lastUserDetail = {
@@ -299,7 +299,7 @@ router.post("/changeprofile", async (req, res) => {
   const { username, profileUrl } = req.body;
   try {
     //if found a user assign it to the variable
-    user = await UserDetail.update(
+    user = await UserDetail.updateOne(
       { username: req.body.username },
       {
         $set: {

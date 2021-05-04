@@ -1,14 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/user");
 const UserDetail = require("../models/userdetail");
-const Band = require("../models/band");
 const BandDetail = require("../models/banddetail");
-
+const {authenticateToken} = require("./utils")
 /**
 //route to add detail to the band
  */
-router.post("/adddetail", async (req, res) => {
+router.post("/adddetail",authenticateToken, async (req, res) => {
   const { username, bandTitle, bandDescription, bandPrice,bandPhoneNumber } = req.body;
   const moreBandDetail = {
     bandTitle,
@@ -16,10 +14,10 @@ router.post("/adddetail", async (req, res) => {
     bandPrice,
     bandPhoneNumber
   };
-  if(bandTitle.length===0||bandDescription.length===0||bandPrice.length===0){
+  if(bandTitle.length<=0||bandDescription.length<=0||bandPrice.length<=0){
       return res.status(201).json({message:"Please Fill in the Required fields"})
   }
-  const band = await BandDetail.updateOne(
+  await BandDetail.updateOne(
       {username},
       {
           $set:{
