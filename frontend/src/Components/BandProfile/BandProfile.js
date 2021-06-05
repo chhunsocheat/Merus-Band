@@ -48,7 +48,7 @@ const BandProfile = () => {
    * function to load the band information from the server
    */
   async function loadBand() {
-    const bandData = await axios.get(`http://localhost:3001/users/${username}`);
+    const bandData = await axios.get(`https://bandquest-bandend.herokuapp.com/users/${username}`);
     //setting the information from the server accordingly to the state
     setBandProfile(bandData.data);
     setVideos(bandData.data.videos);

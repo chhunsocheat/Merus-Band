@@ -8,12 +8,12 @@ const EachSlide = ({ band }) => {
   return (
     <div className="img-container">
       <a href={`band/${band.username}`}>
-        <img className="img-slide" src={rightImage} style={{ width: "100%" }} />
+        <img className="img-slide" src={rightImage} style={{ width: "100%" }} alt={band.username}/>
       </a>
       <div style={{ padding: "10px" }}>
         <div className="userInfo-container">
           <a href={`band/${band.username}`}>
-            <img className="img-slide-pf" src={band.userImg} />
+            <img className="img-slide-pf" src={band.userImg} alt={band.username}/>
           </a>
 
           <div className="slide-pf-info">
@@ -52,6 +52,7 @@ const EachSlide = ({ band }) => {
           <p style={{ marginTop: "auto" }}>{band.price}</p>
         </div>
       </div>
+      <div></div>
     </div>
   );
 };

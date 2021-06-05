@@ -1,66 +1,85 @@
-.splash-image{
-    position: relative;
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.home-container > * {
+  width: 100%;
+  margin: 10px;
+}
+.upper-container {
+  border-radius: 5px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.upper-container img {
+  object-fit: contain;
+
+  display: block;
+  margin: auto;
+  border-radius: 5px;
+}
+.column {
+  position: relative;
+  overflow: hidden;
+}
+.lower-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lower-container img {
+  object-fit: contain;
+
+  border-radius: 5px;
+  display: block;
+  margin: 10px;
+  max-height: 50vh;
+}
+.lower-container-inner {
+  color: white;
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+}
+.upper-container-inner {
+  color: white;
+  font-size: 1em;
+  position: absolute;
+  bottom: 10%;
+  left: 30%;
 }
 
-.container{
-    position: relative; 
-    text-align: center;
-    color: white;
-}
+@media (max-width: 920px) {
+  .lower-container-inner img {
+    margin: auto;
+  }
+  .upper-container-inner {
+    font-size: 0.8em;
+    width: 80%;
+    left: 10%;
+  }
+  .upper-container-inner h1{
+    font-size: 2em;
 
-.container img{
-    border-radius: 34px;
-    padding-top: 16px;
-}
+  }
+  .upper-container img {
+    object-fit: cover;
+    max-width: 100%;
+    height: 100%;
+    margin: auto;
+    border-radius: 5px;
+  }
+  .lower-container-inner {
+  left: 15%;
 
-.container h1{
-    position:absolute;
-    bottom:8px;
-    left:16px;
-    padding-left:80px;
-    padding-bottom:20px;
-    font-weight:bolder;
-}
-.container p{
-    position:absolute; 
-    bottom:8px; 
-    left:16px; 
-    padding-left:100px; 
-    font-size:16px;
-}
-
-.column{
-    float: left;
-    width: 50%;
-    padding: 10px;
-    position: relative;
-    color:white;
-}
-
-.row::after{
-    content: "";
-    clear: both;
-    display: table;
-}
-
-.row{
-    padding-top: 12px;
-}
-
-.card-text{
-    position: absolute;
-    bottom: 8px;
-    left: 16px;
-    padding-bottom: 32px;
-    padding-left: 20px;
-    font-weight: bold;
-}
-
-.card-text2{
-    position: absolute;
-    bottom: 8px;
-    left: 16px;
-    padding-bottom: 18px;
-    padding-left: 60px;
-    font-size: medium;
+    font-size: 0.8em;
+    width: 80%;
+  }
+  .lower-container-inner h1 {
+    font-size: 2em;
+  }
 }

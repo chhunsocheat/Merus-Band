@@ -19,12 +19,12 @@ const UserRequests = () => {
  */
   async function loadBand() {
     const pendingUserRequests = await axios.post(
-      `http://localhost:3001/requests/getuserpendingrequests`, {
+      `https://bandquest-bandend.herokuapp.com/requests/getuserpendingrequests`, {
       username: user.username
     }
     );
     const acceptedUserRequests = await axios.post(
-      `http://localhost:3001/requests/getuseracceptedrequests`, {
+      `https://bandquest-bandend.herokuapp.com/requests/getuseracceptedrequests`, {
       username: user.username
     }
     );

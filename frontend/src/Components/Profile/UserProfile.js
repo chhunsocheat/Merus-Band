@@ -83,7 +83,7 @@ const UserProfile = () => {
           .then(async (fireBaseUrl) => {
             setUserImagePostUrl(fireBaseUrl);
             let updatedUser = await axios.post(
-              "http://localhost:3001/moredetail/changeprofileuser",
+              "https://bandquest-bandend.herokuapp.com/moredetail/changeprofileuser",
               { username: user.username, profileUrl: fireBaseUrl }
             );
             dispatch(initUser({ ...user, userImg: fireBaseUrl }));

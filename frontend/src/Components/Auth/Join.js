@@ -67,7 +67,7 @@ const Join = () => {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:3001/users/band",
+        "https://bandquest-bandend.herokuapp.com/users/band",
         { email, username, members, genre, password },
         {
           headers: {

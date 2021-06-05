@@ -29,7 +29,7 @@ const BookingForm = () => {
    */
   async function loadBand() {
     const bandData = await axios.get(
-      `http://localhost:3001/users/${band.username}`
+      `https://bandquest-bandend.herokuapp.com/users/${band.username}`
     );
 
     return bandData;
@@ -42,7 +42,7 @@ const BookingForm = () => {
   async function submitBooking(e){
     e.preventDefault();
     const bandData = await axios.post(
-      "http://localhost:3001/requests/clientrequest",
+      "https://bandquest-bandend.herokuapp.com/requests/clientrequest",
       {
         username: user.username,
         bandname:username,

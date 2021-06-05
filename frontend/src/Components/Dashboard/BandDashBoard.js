@@ -58,7 +58,7 @@ const BandDashBoard = () => {
    */
   async function loadBand() {
     const bandData = await axios.get(
-      `http://localhost:3001/users/${band.username}`
+      `https://bandquest-bandend.herokuapp.com/users/${band.username}`
     );
     setBand(bandData.data);
     setVideos(bandData.data.videos);
@@ -107,7 +107,7 @@ const BandDashBoard = () => {
           .then(async (fireBaseUrl) => {
             setUserImagePostUrl(fireBaseUrl);
             let updatedUser = await axios.post(
-              "http://localhost:3001/moredetail/changeprofile",
+              "https://bandquest-bandend.herokuapp.com/moredetail/changeprofile",
               { username: band.username, profileUrl: fireBaseUrl }
             );
             dispatch(initBand({ ...band, userImg: fireBaseUrl }));

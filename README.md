@@ -142,4 +142,10 @@ Responsible for the Logic, Routing and Styling of the frontend code. Brendon was
 * **DashBoard**: Built the dashboard for the band. The band can then add more detail and a link to their performance.
 * **UserProfile & BandProfile**: Built a profile interface for the band and the user according to the user of my teammate. 
 
-  
+# Firebase Hosting
+-Firebase init
+-Choose Hosting
+-write build
+-y
+-n
+-firebase deploy

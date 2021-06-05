@@ -44,7 +44,7 @@ const SignUp = () => {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:3001/users/",
+        "https://bandquest-bandend.herokuapp.com/users/",
         { username, email, password, password2 },
         {
           headers: {

@@ -21,12 +21,12 @@ const BandRequests = () => {
    */
   async function loadBand() {
     const pendingBandRequests = await axios.post(
-      `http://localhost:3001/requests/getbandpendingrequests`, {
+      `https://bandquest-bandend.herokuapp.com/requests/getbandpendingrequests`, {
       bandname: band.username
     }
     );
     const acceptedBandRequests = await axios.post(
-      `http://localhost:3001/requests/getbandacceptedrequests`, {
+      `https://bandquest-bandend.herokuapp.com/requests/getbandacceptedrequests`, {
       bandname: band.username
     }
     );

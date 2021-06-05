@@ -17,7 +17,7 @@ const PendingRequestBand = ({ reqInfo }) => {
   });
   async function accepteRequest() {
     const res = await axios.post(
-      `http://localhost:3001/requests/acceptrequest`, {
+      `https://bandquest-bandend.herokuapp.com/requests/acceptrequest`, {
       id: reqInfo._id
     }
     );
@@ -25,7 +25,7 @@ const PendingRequestBand = ({ reqInfo }) => {
   }
   async function deleteRequest() {
     const res = await axios.post(
-      `http://localhost:3001/requests/declinerequest`, {
+      `https://bandquest-bandend.herokuapp.com/requests/declinerequest`, {
       id: reqInfo._id
     }
     );

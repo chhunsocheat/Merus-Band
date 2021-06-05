@@ -49,7 +49,7 @@ router.post("/band", async (req, res) => {
         $or: [{ username }, { email }],
       });
     if (foundBand||foundUser) {
-      errors.push({ message: "username or Email is already taken" });
+      errors.push({ message: "Username or Email is already taken" });
       return res.status(201).json({
         message: errors,
       });

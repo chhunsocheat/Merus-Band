@@ -31,7 +31,7 @@ const BandDetailForm = () => {
   */
   async function loadBand() {
     const bandData = await axios.get(
-      `http://localhost:3001/users/${band.username}`
+      `https://bandquest-bandend.herokuapp.com/users/${band.username}`
     );
     return bandData;
   }
@@ -45,7 +45,7 @@ const BandDetailForm = () => {
       
     
     const bandData = await axios.post(
-      "http://localhost:3001/moredetail/adddetail",
+      "https://bandquest-bandend.herokuapp.com/moredetail/adddetail",
       {
         username: band.username,
         bandTitle,

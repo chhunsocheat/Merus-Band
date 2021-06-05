@@ -53,7 +53,7 @@ const NavBar = () => {
             placeholder="Search..."
             className="ml-auto mr-3"
           />
-          <Button variant="outline-success">Search</Button>
+          <Button onClick={()=>alert("Coming Soon")} variant="outline-success">Search</Button>
         </Form>
         <Nav
           className="mr-auto"

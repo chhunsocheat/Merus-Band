@@ -8,14 +8,16 @@ app.use(cors())
 
 //connecting the server using mongoose
 //connecting to the db using .env file
-
-//"mongodb+srv://socheatchhun:Socheat56@cluster0.ba7dc.mongodb.net/twitter?retryWrites=true&w=majority"
-mongoose.connect(process.env.DATABASE_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then((res)=>{
-   console.log("connected");
-})
+//"mongodb+srv://socheatchhun:Socheat56@cluster0.ba7dc.mongodb.net/bandQuest?retryWrites=true&w=majority"
+// mongodb+srv://<username>:<password>@cluster0.hm9rd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+mongoose.connect(
+    config.DATABASE_URL,  
+        {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }).then((res)=>{
+       console.log("connected");
+    })
 
 const db = mongoose.connection;
 //when the server encounter error

@@ -62,7 +62,7 @@ const NavBarBand = () => {
             placeholder="Search..."
             className="ml-auto mr-3"
           />
-          <Button variant="outline-success">Search</Button>
+          <Button onClick={()=>alert("Coming Soon")} variant="outline-success">Search</Button>
         </Form>
         <Nav className="mr-auto" style={{color:"white",fontSize:"20px",fontWeight:"500",color:"white"}}>
           {/* condition rednering to check when user is null when sign out */}

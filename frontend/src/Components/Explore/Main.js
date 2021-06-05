@@ -26,7 +26,7 @@ const Main = () => {
   }
   const clientName = returnLoggedInClientName();
   async function loadData() {
-    const data = await axios.get(`http://localhost:3001/users/${clientName}`);
+    const data = await axios.get(`https://bandquest-bandend.herokuapp.com/users/${clientName}`);
     //(data);
   }
   useEffect(() => {

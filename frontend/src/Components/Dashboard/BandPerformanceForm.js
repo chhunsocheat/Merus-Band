@@ -20,7 +20,7 @@ const BandPerformanceForm = () => {
   */
   async function loadBand() {
     const bandData = await axios.get(
-      `http://localhost:3001/users/${band.username}`
+      `https://bandquest-bandend.herokuapp.com/users/${band.username}`
     );
     return bandData;
   }
@@ -31,7 +31,7 @@ const BandPerformanceForm = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     const bandData = await axios.post(
-      "http://localhost:3001/moredetail/addvdourl",
+      "https://bandquest-bandend.herokuapp.com/moredetail/addvdourl",
       {
         username: band.username,
         vdoUrl: bandVdoUrl,

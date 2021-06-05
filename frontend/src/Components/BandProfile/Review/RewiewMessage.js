@@ -21,7 +21,7 @@ const ReviewMessage = ({ addReview }) => {
 
   async function postReview() {
 
-    const reviewRes = await axios.post("http://localhost:3001/reviews/addreview", {
+    const reviewRes = await axios.post("https://bandquest-bandend.herokuapp.com/reviews/addreview", {
       reviewMessage,
       reviewRating: rating,
       reviewByUsername: user.username,

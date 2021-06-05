@@ -21,7 +21,7 @@ const Reviews = () => {
    * function to load all the reviews
    */
   const loadReviews= async ()=>{
-    const allReviews = await axios.get(`http://localhost:3001/reviews/getreviews/${username}`)
+    const allReviews = await axios.get(`https://bandquest-bandend.herokuapp.com/reviews/getreviews/${username}`)
 
     return allReviews;
   }
