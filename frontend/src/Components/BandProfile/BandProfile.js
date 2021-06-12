@@ -121,7 +121,7 @@ const BandProfile = () => {
                 </Button>
               ) : (
                 <Popup
-                  content="You need to sign in first as a normal user"
+                  content="You need to sign in first as normal user!"
                   on="click"
                   pinned
                   trigger={<Button basic color="green" content="Book Band" />}

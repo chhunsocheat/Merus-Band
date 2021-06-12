@@ -5,8 +5,10 @@ const EachCategory = ({category}) => {
     return (
         <div>
             <NavLink 
+            onClick={()=>alert("Implementing Soon!")}
             style={{textDecoration:"none",color:"#7A7D85"}}
-            to={`/category/${category}`}>
+            to={`/explore`}
+            >
             <p>{category}</p>
             </NavLink>
         </div>

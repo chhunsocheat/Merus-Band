@@ -65,11 +65,11 @@ const ReviewMessage = ({ addReview }) => {
 
       />
 
-      {!isBand?
+      {!isBand&&loginState?
       <Button className="mb-5" onClick={postReview} content='Add Review' labelPosition='left' icon='edit' primary />
     :
     <Popup
-          content='You need to sign in as user'
+          content='You need to sign in as user!'
           on='click'
           pinned
           trigger={
