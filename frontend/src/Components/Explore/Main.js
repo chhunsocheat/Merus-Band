@@ -26,6 +26,7 @@ const Main = () => {
   }
   const clientName = returnLoggedInClientName();
   async function loadData() {
+    console.log(clientName)
     const data = await axios.get(`https://bandquest-bandend.herokuapp.com/users/${clientName}`);
     //(data);
   }

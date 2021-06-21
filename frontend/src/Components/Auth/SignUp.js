@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from "react-redux"
 import { initUser, loginUser } from "../../reducers/rootreducer"
 
-import { Container, Row, Col, Alert } from 'react-bootstrap'
+import { Container, Alert } from 'react-bootstrap'
 import { NavLink } from "react-router-dom"
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
@@ -54,19 +54,20 @@ const SignUp = () => {
       )
       .then((res) => {
         //same as in signin
-        dispatch(initUser(res.data.data))
         //push the route to profile/username
         if (res.status === 200) {
+          dispatch(initUser(res.data.data))
           //if the status is ok 200 then we dispatch the action to the 
           //store and route the user to the app interface
           setStatus("Sign Up")
 
           dispatch(loginUser(true))
-       
+          // console.log("200");
           history.push(`/profile/${res.data.data.username}`)
         }
         else {
           setStatus("Sign Up")
+          // console.log("other");
 
           setFeedback(res.data.message)
         }
@@ -76,10 +77,8 @@ const SignUp = () => {
   };
   return (
     <Container className="signup-container" fluid="sm">
-      <Row>
-        <Col></Col>
-        <Col className="backGround" xs={10} md={6}>
-        <h1 style={{position:"relative"}}>Sign Up
+        <div className="backGround" xs={10} md={6}>
+        <h2 style={{position:"relative"}}>Sign Up
         <i
                 style={{
                   marginLeft:"5px",
@@ -91,7 +90,7 @@ const SignUp = () => {
                 class="fas fa-sign-in-alt"
               ></i>
 
-        </h1>
+        </h2>
 
           <form >
 
@@ -143,9 +142,7 @@ const SignUp = () => {
 
 
           </form>
-        </Col>
-        <Col></Col>
-      </Row>
+        </div>
     </Container>
   );
 };

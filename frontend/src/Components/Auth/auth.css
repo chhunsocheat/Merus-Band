@@ -1,18 +1,22 @@
 .signin-container{
-    transform: translateY(-50%);
-    margin-top: 30vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 70vh;
+   width: 100vw;
     /* background: white;
     padding: 30px;
     border-radius: 5px; */
 }
 .signup-container{
-    transform: translateY(-50%);
-    margin-top: 40vh;
-    /* background: white;
-    padding: 30px;
-    border-radius: 5px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    width: 100vw;
 }
 .backGround{
+    width: 60%;
     border-radius: 5px;
     padding: 50px;
     background: #F8F9FA;
@@ -43,4 +47,18 @@
 
     border: 1px solid #21BA45;
     transition: ease all 0.1s;
+}
+@media (max-width:920px) {
+    .backGround{
+        width: 100%;
+        border-radius: 5px;
+        padding: 20px;
+        background: #F8F9FA;
+    
+    }
+    .signin-container{
+     
+        height: 60vh;
+     
+     }
 }

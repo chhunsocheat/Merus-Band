@@ -105,7 +105,7 @@ const MultipleSlide = () => {
         display: "flex",
         zIndex: "-4",
         justifyContent: "center",
-        width: "100%",
+        width: "100%"
       }}
     >
       <div className="bigContainer">

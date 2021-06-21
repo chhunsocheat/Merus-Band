@@ -73,8 +73,8 @@ const BandProfile = () => {
     });
   }, []);
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <div className="bandProfileContainer">
+    <div style={{ display: "flex", justifyContent: "center",maxWidth:"100%" }}>
+      <div className="bandProfileContainer" style={{maxWidth:"100%" }}>
         <div className="bandLeft">
           <div className="bandLeftUpper">
             <img src={bandProfile.userImg} alt="" />
@@ -172,8 +172,8 @@ const BandProfile = () => {
           <div
             style={{
               display: "flex",
-              justifyContent: "flex-start",
-              alignContent: "center",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
             <PerformanceList videos={videos} />

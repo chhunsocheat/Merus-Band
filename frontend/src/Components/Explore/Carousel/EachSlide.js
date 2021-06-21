@@ -27,7 +27,7 @@ const EachSlide = ({ band }) => {
         <div style={{ fontWeight: "400", marginTop: "20px" }}>
           <p style={{ fontWeight: "700" }}>{band.description.bandTitle}</p>
 
-          <p>{band.description.bandDescription}</p>
+          <p style={{height:"50px",overflow:"hidden"}}>{band.description.bandDescription}</p>
           <p
             style={{ borderBottom: "1px solid #b2b2b2", paddingBottom: "10px" }}
           >

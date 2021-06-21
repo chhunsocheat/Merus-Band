@@ -85,12 +85,10 @@ const SignIn = () => {
       });
   };
   return (
-    <Container className="signin-container" fluid="sm">
-      <Row>
-        <Col></Col>
-        <Col className="backGround" xs={10} md={6}>
-          <div>
-            <h1 style={{ position: "relative" }}>
+    <Container className="signin-container">
+        <div className="backGround">
+          <div style={{marginBottom:"10px"}}>
+            <h2 style={{ position: "relative" }}>
               Sign In
               <i
                 style={{
@@ -102,7 +100,7 @@ const SignIn = () => {
                 }}
                 class="fas fa-sign-in-alt"
               ></i>
-            </h1>
+            </h2>
           </div>
           <form>
             <div className="form-group">
@@ -141,9 +139,7 @@ const SignIn = () => {
               </p>
             </p>
           </form>
-        </Col>
-        <Col></Col>
-      </Row>
+        </div>
     </Container>
   );
 };

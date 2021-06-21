@@ -26,9 +26,7 @@
   flex-direction: column;
   margin-bottom: 30px;
 }
-.bandRight{
-  /* padding-top: 50px; */
-}
+
 /* Performance Video */
 .performanceListContainer{
   display: grid;
@@ -106,7 +104,14 @@
     
     grid-template-columns: 1fr;
   }
-  
+
+  .performanceContainer{
+    max-width: auto;
+  }  
+  iframe{
+    width: auto;
+    height: auto;
+  }
 }
 @media (max-width:1380px){
   
