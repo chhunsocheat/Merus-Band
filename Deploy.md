@@ -14,7 +14,7 @@ npm run start
 
 ## Backend
 
-### To run the back end code,simply go to the backend folder and run
+### To run the back end code,simply go to the backend folder and run these command
 
 ```
 npm run server
