@@ -6,7 +6,7 @@ Here is the link: https://band-quest.web.app/
 
 ## Frontend
 
-### To run the front end code,simply go to the frontend folder and run
+### To run the front end code,simply go to the frontend folder and run this command
 ```
 npm run start
 
