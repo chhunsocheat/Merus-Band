@@ -1,7 +1,8 @@
 # Link to the deployed app
 Here is the link: https://band-quest.web.app/
 
-**Note**: If you are running the app for the first, the server might have to be turned on because heroku's dyna will be asleep after 1 hour of inactivity.
+**Note**
+If you are running the app for the first, the server might have to be turned on because heroku's dyna will be asleep after 1 hour of inactivity.
 
 
 ## Frontend
